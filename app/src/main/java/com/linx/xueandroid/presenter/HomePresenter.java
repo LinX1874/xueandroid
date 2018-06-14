@@ -1,16 +1,13 @@
-package com.linx.xueandroid.model;
+package com.linx.xueandroid.presenter;
 
 import android.app.Activity;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableList;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.linx.xueandroid.BR;
 import com.linx.xueandroid.R;
 import com.linx.xueandroid.adapter.HomeAdapter;
-import com.linx.xueandroid.base.BaseViewModel;
+import com.linx.xueandroid.base.BasePresenter;
 import com.linx.xueandroid.bean.HomeBean;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.callback.SimpleCallBack;
@@ -22,14 +19,13 @@ import com.zhouyou.http.exception.ApiException;
  * 作者：LinX
  * 创建时间：2018/6/14 14:40
  */
-public class HomeViewModel extends BaseViewModel {
+public class HomePresenter extends BasePresenter {
 
     Activity mActivity;
     RecyclerView mRecyclerView;
 
 
-
-    public HomeViewModel(Activity activity, RecyclerView recyclerView) {
+    public HomePresenter(Activity activity, RecyclerView recyclerView) {
         this.mActivity = activity;
         this.mRecyclerView = recyclerView;
     }
@@ -58,8 +54,11 @@ public class HomeViewModel extends BaseViewModel {
                 mhomeBean.getData().setDatas(homeBean.getData().getDatas());
 
                 if (homeAdapter == null)
-                    homeAdapter = new HomeAdapter(mActivity);
-                homeAdapter.getItems().addAll(mhomeBean.getData().getDatas());
+                    homeAdapter = new HomeAdapter(mActivity, mhomeBean.getData().getDatas(), R.layout.item_home);
+else{
+                    homeAdapter.insertAll(homeBean.getData().getDatas());
+                }
+
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
                 mRecyclerView.setAdapter(homeAdapter);
                 homeAdapter.notifyDataSetChanged();

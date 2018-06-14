@@ -19,7 +19,7 @@ import com.trello.rxlifecycle2.components.support.RxFragment;
  * Fragment基类
  */
 public abstract class RxLazyFragment extends RxFragment {
-    private View parentView;
+    public View parentView;
     private FragmentActivity activity;
     // 标志位 标志已经初始化完成。
     protected boolean isPrepared;

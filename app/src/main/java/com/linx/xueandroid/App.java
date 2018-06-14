@@ -33,7 +33,8 @@ public class App extends Application {
                 .setBaseUrl("http://www.wanandroid.com/")
                 .setReadTimeOut(10 * 1000)
                 .setWriteTimeOut(10 * 1000)
-                .setConnectTimeout(10 * 1000);
+                .setConnectTimeout(10 * 1000)
+        ;
     }
 
     public static App getInstance() {

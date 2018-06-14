@@ -144,24 +144,24 @@ public class HomeBean extends BaseObservable {
              * zan : 0
              */
 
-            private String apkLink;
-            private String author;
+            private String apkLink="";
+            private String author="";
             private int chapterId;
-            private String chapterName;
+            private String chapterName="";
             private boolean collect;
             private int courseId;
-            private String desc;
-            private String envelopePic;
+            private String desc="";
+            private String envelopePic="";
             private boolean fresh;
             private int id;
-            private String link;
-            private String niceDate;
-            private String origin;
-            private String projectLink;
+            private String link="";
+            private String niceDate="";
+            private String origin="";
+            private String projectLink="";
             private long publishTime;
             private int superChapterId;
-            private String superChapterName;
-            private String title;
+            private String superChapterName="";
+            private String title="";
             private int type;
             private int userId;
             private int visible;
