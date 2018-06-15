@@ -3,6 +3,8 @@ package com.linx.xueandroid.presenter;
 import android.app.Activity;
 import android.app.ProgressDialog;
 
+import com.linx.xueandroid.base.BaseApi;
+import com.linx.xueandroid.bean.BannerBean;
 import com.linx.xueandroid.bean.HomeBean;
 import com.linx.xueandroid.ui.view.IHomeView;
 import com.zhouyou.http.EasyHttp;
@@ -27,19 +29,41 @@ public class HomePresenter extends BasePresenter<IHomeView> {
     }
 
 
-
     public void getArticle(int page) {
-
-        EasyHttp.get("article/list/" + page + "/json").execute(new SimpleCallBack<String>() {
+        if (page == 0) {
+            getBanner();
+            homeView.showProgressDialog();
+        }
+        EasyHttp.get(BaseApi.getArticle(page)).execute(new SimpleCallBack<String>() {
             @Override
             public void onError(ApiException e) {
-
+                homeView.ShowToast(e.getMessage());
+                homeView.dimissProgressDialog();
             }
 
             @Override
             public void onSuccess(String obj) {
                 HomeBean homeBean = gson.fromJson(obj, HomeBean.class);
                 homeView.fillData(homeBean.getData().getDatas());
+                homeView.dimissProgressDialog();
+            }
+        });
+
+    }
+
+
+    public void getBanner() {
+        EasyHttp.get(BaseApi.getBanner()).execute(new SimpleCallBack<String>() {
+            @Override
+            public void onError(ApiException e) {
+                homeView.ShowToast(e.getMessage());
+                homeView.dimissProgressDialog();
+            }
+
+            @Override
+            public void onSuccess(String obj) {
+                BannerBean homeBean = gson.fromJson(obj, BannerBean.class);
+                homeView.fillBanner(homeBean.getData());
 
             }
         });

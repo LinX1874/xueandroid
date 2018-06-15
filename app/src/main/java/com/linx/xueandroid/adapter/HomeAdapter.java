@@ -1,6 +1,7 @@
 package com.linx.xueandroid.adapter;
 
 import android.content.Context;
+import android.view.View;
 
 import com.linx.xueandroid.R;
 import com.linx.xueandroid.base.BaseAdapter;
@@ -21,10 +22,21 @@ public class HomeAdapter extends BaseAdapter<HomeBean.DataBean.DatasBean> {
 
     @Override
     public void convert(BaseViewHolder holder, HomeBean.DataBean.DatasBean item, int position, boolean isScrolling) {
-        holder.setText(R.id.txv_article_name,item.getTitle());
-//        holder.setText();
-//        holder.setText();
-//        holder.setText();
+        holder.setText(R.id.txv_article_name, item.getTitle());
+
+        holder.setText(R.id.txv_article_type, item.getSuperChapterName());
+
+        holder.setText(R.id.txv_desc, item.getDesc());
+
+        if (item.getDesc().length() <= 0) {
+            holder.setVisibility(R.id.txv_desc, View.GONE);
+        } else {
+            holder.setVisibility(R.id.txv_desc, View.VISIBLE);
+        }
+        holder.setText(R.id.txv_auth_name, item.getAuthor());
+
+        holder.setText(R.id.txv_time, item.getNiceDate());
+
 
     }
 

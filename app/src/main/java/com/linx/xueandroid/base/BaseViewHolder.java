@@ -92,4 +92,16 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         Glide.with(context).load(url).into((ImageView) getView(viewId));
         return this;
     }
+
+
+    /**
+     * 设置图片
+     */
+    public BaseViewHolder setVisibility(int viewId, int Visibility) {
+        View iv = getView(viewId);
+
+        iv.setVisibility(Visibility);
+
+        return this;
+    }
 }

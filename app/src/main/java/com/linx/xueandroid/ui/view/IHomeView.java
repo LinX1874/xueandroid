@@ -1,5 +1,6 @@
 package com.linx.xueandroid.ui.view;
 
+import com.linx.xueandroid.bean.BannerBean;
 import com.linx.xueandroid.bean.HomeBean;
 
 import java.util.List;
@@ -12,5 +13,5 @@ import java.util.List;
 public interface IHomeView extends IBaseView {
     void fillData(List<HomeBean.DataBean.DatasBean> datasBeanList);
 
-
+    void fillBanner(List<BannerBean.DataBean> datasBeanList);
 }
