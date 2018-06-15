@@ -1,14 +1,10 @@
 package com.linx.xueandroid.presenter;
 
 import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.app.ProgressDialog;
 
-import com.google.gson.Gson;
-import com.linx.xueandroid.R;
-import com.linx.xueandroid.adapter.HomeAdapter;
-import com.linx.xueandroid.base.BasePresenter;
 import com.linx.xueandroid.bean.HomeBean;
+import com.linx.xueandroid.ui.view.IHomeView;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -19,20 +15,18 @@ import com.zhouyou.http.exception.ApiException;
  * 作者：LinX
  * 创建时间：2018/6/14 14:40
  */
-public class HomePresenter extends BasePresenter {
+public class HomePresenter extends BasePresenter<IHomeView> {
 
     Activity mActivity;
-    RecyclerView mRecyclerView;
 
+    IHomeView homeView;
 
-    public HomePresenter(Activity activity, RecyclerView recyclerView) {
+    public HomePresenter(Activity activity, IHomeView iHomeView) {
         this.mActivity = activity;
-        this.mRecyclerView = recyclerView;
+        this.homeView = iHomeView;
     }
 
-    HomeBean mhomeBean = new HomeBean();
 
-    HomeAdapter homeAdapter;
 
     public void getArticle(int page) {
 
@@ -44,24 +38,9 @@ public class HomePresenter extends BasePresenter {
 
             @Override
             public void onSuccess(String obj) {
-
-                Gson gson = new Gson();
                 HomeBean homeBean = gson.fromJson(obj, HomeBean.class);
+                homeView.fillData(homeBean.getData().getDatas());
 
-                if (page == 0) {
-                    mhomeBean = new HomeBean();
-                }
-                mhomeBean.getData().setDatas(homeBean.getData().getDatas());
-
-                if (homeAdapter == null)
-                    homeAdapter = new HomeAdapter(mActivity, mhomeBean.getData().getDatas(), R.layout.item_home);
-else{
-                    homeAdapter.insertAll(homeBean.getData().getDatas());
-                }
-
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
-                mRecyclerView.setAdapter(homeAdapter);
-                homeAdapter.notifyDataSetChanged();
             }
         });
     }

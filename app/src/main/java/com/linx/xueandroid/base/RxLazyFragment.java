@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 /**
  * Created by hcc on 16/8/7 21:18
@@ -31,10 +34,15 @@ public abstract class RxLazyFragment extends RxFragment {
     @LayoutRes
     int getLayoutResId();
 
+
+    Unbinder unbinder;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
+
         parentView = inflater.inflate(getLayoutResId(), container, false);
         activity = getSupportActivity();
+        unbinder = ButterKnife.bind(this, parentView);
         return parentView;
     }
 
@@ -61,8 +69,9 @@ public abstract class RxLazyFragment extends RxFragment {
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
 
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
 

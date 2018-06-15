@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
+import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
 import com.orhanobut.hawk.Hawk;
 import com.zhouyou.http.EasyHttp;
 
@@ -33,8 +35,11 @@ public class App extends Application {
                 .setBaseUrl("http://www.wanandroid.com/")
                 .setReadTimeOut(10 * 1000)
                 .setWriteTimeOut(10 * 1000)
-                .setConnectTimeout(10 * 1000)
-        ;
+                .setConnectTimeout(10 * 1000);
+
+
+        TwinklingRefreshLayout.setDefaultHeader(ProgressLayout.class.getName());
+        TwinklingRefreshLayout.setDefaultFooter(ProgressLayout.class.getName());
     }
 
     public static App getInstance() {

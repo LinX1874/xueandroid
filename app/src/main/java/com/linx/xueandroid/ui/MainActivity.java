@@ -50,14 +50,14 @@ public class MainActivity extends RxBaseActivity
         toolbar.setTitle("首页");
         setSupportActionBar(toolbar);
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        RxView.clicks(fab).throttleFirst(2, TimeUnit.SECONDS).subscribe(o -> {
 //            EventBus.getDefault().post(new TestEvent());
 //        });
-        RxView.clicks(fab).throttleFirst(2, TimeUnit.SECONDS).subscribe(new Consumer<Object>() {
-            @Override
-            public void accept(Object o) throws Exception {
-
+//        RxView.clicks(fab).throttleFirst(2, TimeUnit.SECONDS).subscribe(new Consumer<Object>() {
+//            @Override
+//            public void accept(Object o) throws Exception {
+//
 //                EasyHttp.get("article/list/1/json").execute(new SimpleCallBack<String>() {
 //                    @Override
 //                    public void onError(ApiException e) {
@@ -69,8 +69,8 @@ public class MainActivity extends RxBaseActivity
 //                        ToastUtil.LongToast(o.toString());
 //                    }
 //                });
-            }
-        });
+//            }
+//        });
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -85,6 +85,12 @@ public class MainActivity extends RxBaseActivity
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        if (homeFragment == null) {
+            homeFragment = new HomeFragment();
+        }
+        showFragment(homeFragment);
     }
 
 
@@ -98,9 +104,9 @@ public class MainActivity extends RxBaseActivity
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     toolbar.setTitle("首页");
-//                    if (homeFragment == null) {
+                    if (homeFragment == null) {
                         homeFragment = new HomeFragment();
-//                    }
+                    }
                     showFragment(homeFragment);
                     return true;
                 case R.id.navigation_dashboard:

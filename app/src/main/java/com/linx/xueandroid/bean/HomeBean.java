@@ -1,8 +1,6 @@
 package com.linx.xueandroid.bean;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.databinding.Observable;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +10,14 @@ import java.util.List;
  * 作者：LinX
  * 创建时间：2018/6/14 14:36
  */
-public class HomeBean extends BaseObservable {
+public class HomeBean   {
 
 
     private DataBean data=new DataBean();
     private int errorCode;
     private String errorMsg;
 
-    @Bindable
+  
     public DataBean getData() {
         return data;
     }
@@ -28,7 +26,7 @@ public class HomeBean extends BaseObservable {
         this.data = data;
     }
 
-    @Bindable
+  
     public int getErrorCode() {
         return errorCode;
     }
@@ -37,7 +35,7 @@ public class HomeBean extends BaseObservable {
         this.errorCode = errorCode;
     }
 
-    @Bindable
+  
     public String getErrorMsg() {
         return errorMsg;
     }
@@ -46,7 +44,7 @@ public class HomeBean extends BaseObservable {
         this.errorMsg = errorMsg;
     }
 
-    public static class DataBean extends BaseObservable {
+    public static class DataBean   {
 
 
         private int curPage;
@@ -57,7 +55,7 @@ public class HomeBean extends BaseObservable {
         private int total;
         private List<DatasBean> datas = new ArrayList<>();
 
-        @Bindable
+      
         public int getCurPage() {
             return curPage;
         }
@@ -66,7 +64,7 @@ public class HomeBean extends BaseObservable {
             this.curPage = curPage;
         }
 
-        @Bindable
+      
         public int getOffset() {
             return offset;
         }
@@ -74,7 +72,7 @@ public class HomeBean extends BaseObservable {
         public void setOffset(int offset) {
             this.offset = offset;
         }
-        @Bindable
+      
         public boolean isOver() {
             return over;
         }
@@ -82,7 +80,7 @@ public class HomeBean extends BaseObservable {
         public void setOver(boolean over) {
             this.over = over;
         }
-        @Bindable
+      
         public int getPageCount() {
             return pageCount;
         }
@@ -90,7 +88,7 @@ public class HomeBean extends BaseObservable {
         public void setPageCount(int pageCount) {
             this.pageCount = pageCount;
         }
-        @Bindable
+      
         public int getSize() {
             return size;
         }
@@ -98,7 +96,7 @@ public class HomeBean extends BaseObservable {
         public void setSize(int size) {
             this.size = size;
         }
-        @Bindable
+      
         public int getTotal() {
             return total;
         }
@@ -107,7 +105,7 @@ public class HomeBean extends BaseObservable {
             this.total = total;
         }
 
-        @Bindable
+      
         public List<DatasBean> getDatas() {
             return datas;
         }
@@ -117,7 +115,7 @@ public class HomeBean extends BaseObservable {
             this.datas.addAll(datas);
         }
 
-        public static class DatasBean extends BaseObservable {
+        public static class DatasBean   {
             /**
              * apkLink :
              * author : zhhr1122
@@ -167,7 +165,7 @@ public class HomeBean extends BaseObservable {
             private int visible;
             private int zan;
             private List<TagsBean> tags;
-            @Bindable
+          
             public String getApkLink() {
                 return apkLink;
             }
@@ -175,7 +173,7 @@ public class HomeBean extends BaseObservable {
             public void setApkLink(String apkLink) {
                 this.apkLink = apkLink;
             }
-            @Bindable
+          
             public String getAuthor() {
                 return author;
             }
@@ -183,7 +181,7 @@ public class HomeBean extends BaseObservable {
             public void setAuthor(String author) {
                 this.author = author;
             }
-            @Bindable
+          
             public int getChapterId() {
                 return chapterId;
             }
@@ -191,7 +189,7 @@ public class HomeBean extends BaseObservable {
             public void setChapterId(int chapterId) {
                 this.chapterId = chapterId;
             }
-            @Bindable
+          
             public String getChapterName() {
                 return chapterName;
             }
@@ -199,7 +197,7 @@ public class HomeBean extends BaseObservable {
             public void setChapterName(String chapterName) {
                 this.chapterName = chapterName;
             }
-            @Bindable
+          
             public boolean isCollect() {
                 return collect;
             }
@@ -207,7 +205,7 @@ public class HomeBean extends BaseObservable {
             public void setCollect(boolean collect) {
                 this.collect = collect;
             }
-            @Bindable
+          
             public int getCourseId() {
                 return courseId;
             }
@@ -215,7 +213,7 @@ public class HomeBean extends BaseObservable {
             public void setCourseId(int courseId) {
                 this.courseId = courseId;
             }
-            @Bindable
+          
             public String getDesc() {
                 return desc;
             }
@@ -223,7 +221,7 @@ public class HomeBean extends BaseObservable {
             public void setDesc(String desc) {
                 this.desc = desc;
             }
-            @Bindable
+          
             public String getEnvelopePic() {
                 return envelopePic;
             }
@@ -231,7 +229,7 @@ public class HomeBean extends BaseObservable {
             public void setEnvelopePic(String envelopePic) {
                 this.envelopePic = envelopePic;
             }
-            @Bindable
+          
             public boolean isFresh() {
                 return fresh;
             }
@@ -239,7 +237,7 @@ public class HomeBean extends BaseObservable {
             public void setFresh(boolean fresh) {
                 this.fresh = fresh;
             }
-            @Bindable
+          
             public int getId() {
                 return id;
             }
@@ -247,7 +245,7 @@ public class HomeBean extends BaseObservable {
             public void setId(int id) {
                 this.id = id;
             }
-            @Bindable
+          
             public String getLink() {
                 return link;
             }
@@ -255,7 +253,7 @@ public class HomeBean extends BaseObservable {
             public void setLink(String link) {
                 this.link = link;
             }
-            @Bindable
+          
             public String getNiceDate() {
                 return niceDate;
             }
@@ -263,7 +261,7 @@ public class HomeBean extends BaseObservable {
             public void setNiceDate(String niceDate) {
                 this.niceDate = niceDate;
             }
-            @Bindable
+          
             public String getOrigin() {
                 return origin;
             }
@@ -271,7 +269,7 @@ public class HomeBean extends BaseObservable {
             public void setOrigin(String origin) {
                 this.origin = origin;
             }
-            @Bindable
+          
             public String getProjectLink() {
                 return projectLink;
             }
@@ -279,7 +277,7 @@ public class HomeBean extends BaseObservable {
             public void setProjectLink(String projectLink) {
                 this.projectLink = projectLink;
             }
-            @Bindable
+          
             public long getPublishTime() {
                 return publishTime;
             }
@@ -287,7 +285,7 @@ public class HomeBean extends BaseObservable {
             public void setPublishTime(long publishTime) {
                 this.publishTime = publishTime;
             }
-            @Bindable
+          
             public int getSuperChapterId() {
                 return superChapterId;
             }
@@ -295,7 +293,7 @@ public class HomeBean extends BaseObservable {
             public void setSuperChapterId(int superChapterId) {
                 this.superChapterId = superChapterId;
             }
-            @Bindable
+          
             public String getSuperChapterName() {
                 return superChapterName;
             }
@@ -303,7 +301,7 @@ public class HomeBean extends BaseObservable {
             public void setSuperChapterName(String superChapterName) {
                 this.superChapterName = superChapterName;
             }
-            @Bindable
+          
             public String getTitle() {
                 return title;
             }
@@ -311,7 +309,7 @@ public class HomeBean extends BaseObservable {
             public void setTitle(String title) {
                 this.title = title;
             }
-            @Bindable
+          
             public int getType() {
                 return type;
             }
@@ -319,7 +317,7 @@ public class HomeBean extends BaseObservable {
             public void setType(int type) {
                 this.type = type;
             }
-            @Bindable
+          
             public int getUserId() {
                 return userId;
             }
@@ -327,7 +325,7 @@ public class HomeBean extends BaseObservable {
             public void setUserId(int userId) {
                 this.userId = userId;
             }
-            @Bindable
+          
             public int getVisible() {
                 return visible;
             }
@@ -343,7 +341,7 @@ public class HomeBean extends BaseObservable {
             public void setZan(int zan) {
                 this.zan = zan;
             }
-            @Bindable
+          
             public List<TagsBean> getTags() {
                 return tags;
             }
@@ -352,7 +350,7 @@ public class HomeBean extends BaseObservable {
                 this.tags = tags;
             }
 
-            public static class TagsBean extends BaseObservable{
+            public static class TagsBean  {
                 /**
                  * name : 项目
                  * url : /project/list/1?cid=294
@@ -360,7 +358,7 @@ public class HomeBean extends BaseObservable {
 
                 private String name;
                 private String url;
-                @Bindable
+              
                 public String getName() {
                     return name;
                 }
@@ -368,7 +366,7 @@ public class HomeBean extends BaseObservable {
                 public void setName(String name) {
                     this.name = name;
                 }
-                @Bindable
+              
                 public String getUrl() {
                     return url;
                 }

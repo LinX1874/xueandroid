@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 /**
  * Created by hcc on 16/8/7 21:18
@@ -13,10 +16,13 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  */
 public abstract class RxBaseActivity extends RxAppCompatActivity {
 
+    Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        unbinder = ButterKnife.bind(this);
         //设置布局内容
         setContentView(getLayoutId());
         //初始化黄油刀控件绑定框架
@@ -85,7 +91,8 @@ public abstract class RxBaseActivity extends RxAppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
 
+        super.onDestroy();
+        unbinder.unbind();
     }
 }
